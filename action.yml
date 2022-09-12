@@ -2,10 +2,14 @@ name: cache-restore-action
 description: "Metti qualcosa in cache con differenziazione per repository automatica"
 inputs:
   path:
-    description: "Dati da mettere in cache"
+    description: "Dati da prendere dalla cache"
     required: true
+  dest:
+    description: "Destinazione dei file"
+    default: "."
+    required: false
 runs:
   using: "composite"
   steps:
-    - run: "cp -r /cache/${{ github.event.repository.name }}/${{ inputs.path }} ."
+    - run: "cp -r /cache/${{ github.event.repository.name }}/${{ inputs.path }} ${{ inputs.dest }}"
       shell: bash
