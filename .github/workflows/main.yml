@@ -10,6 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: "Cache file"
+        uses: TecnoCraftNet/cache-action@cache
         with:
           path: "test.txt"
       - name: "Check restored"
