@@ -16,7 +16,7 @@ jobs:
           path: "test.txt"
       - name: "Check cached"
         run: |
-          cat /cache/${{ github.event.repository.name }}/test.txt | grep 'test' &> /dev/null
+          cat /cache/${{ github.event.repository.name }}/test.txt | grep 'successo' &> /dev/null
           if [ $? != 0 ]; then
              exit 1
           fi
