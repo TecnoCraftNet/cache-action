@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - cache
+      - restore
 jobs:
   test_action:
     runs-on: self-hosted
