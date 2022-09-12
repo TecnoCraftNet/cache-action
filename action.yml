@@ -1,4 +1,4 @@
-name: cache-action
+name: cache-restore-action
 description: "Metti qualcosa in cache con differenziazione per repository automatica"
 inputs:
   path:
@@ -7,7 +7,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: "mkdir /cache/"
-      shell: bash
-    - run: "cp -r ${{ inputs.path }} /cache/${{ github.event.repository.name }}"
+    - run: "cp -r /cache/${{ github.event.repository.name }}/${{ inputs.path }} ."
       shell: bash

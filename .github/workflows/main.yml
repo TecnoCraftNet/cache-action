@@ -9,16 +9,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: "Test action"
-        uses: ./
-        id: cache
+      - name: "Cache file"
         with:
-          file: "test.txt"
-          key: ${{ secrets.key }}
-          server: ${{ secrets.server }}
-      - name: "Check cached"
+          path: "test.txt"
+      - name: "Check restored"
         run: |
-          cat /cache/${{ github.event.repository.name }}/test.txt | grep 'test' &> /dev/null
+          cat ./test.txt | grep 'successo' &> /dev/null
           if [ $? != 0 ]; then
              exit 1
           fi
