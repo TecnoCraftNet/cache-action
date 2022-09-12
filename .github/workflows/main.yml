@@ -13,9 +13,7 @@ jobs:
         uses: ./
         id: cache
         with:
-          file: "test.txt"
-          key: ${{ secrets.key }}
-          server: ${{ secrets.server }}
+          path: "test.txt"
       - name: "Check cached"
         run: |
           cat /cache/${{ github.event.repository.name }}/test.txt | grep 'test' &> /dev/null
