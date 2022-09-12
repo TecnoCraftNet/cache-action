@@ -9,5 +9,5 @@ runs:
   steps:
     - run: "mkdir -p /cache/${{ github.event.repository.name }}"
       shell: bash
-    - run: "cp -r ${{ inputs.path }} /cache/${{ github.event.repository.name }} | true"
+    - run: "cp -r ${{ inputs.path }} /cache/${{ github.event.repository.name }}"
       shell: bash
