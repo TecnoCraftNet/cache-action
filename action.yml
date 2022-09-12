@@ -1,0 +1,13 @@
+name: cache-action
+description: "Metti qualcosa in cache con differenziazione per repository automatica"
+inputs:
+  path:
+    description: "Dati da mettere in cache"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: "mkdir /cache/"
+      shell: bash
+    - run: "cp -r ${{ inputs.path }} /cache/${{ github.event.repository.name }}"
+      shell: bash

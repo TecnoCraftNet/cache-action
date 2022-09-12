@@ -1,0 +1,25 @@
+on:
+  push:
+    branches:
+      - cache
+jobs:
+  test_action:
+    runs-on: self-hosted
+    name: "Test action"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: "Test action"
+        uses: ./
+        id: cache
+        with:
+          file: "test.txt"
+          key: ${{ secrets.key }}
+          server: ${{ secrets.server }}
+      - name: "Check cached"
+        run: |
+          cat /cache/${{ github.event.repository.name }}/test.txt | grep 'test' &> /dev/null
+          if [ $? != 0 ]; then
+             exit 1
+          fi
+        shell: bash
