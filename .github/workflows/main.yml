@@ -13,6 +13,10 @@ jobs:
         uses: TecnoCraftNet/cache-action@cache
         with:
           path: "test.txt"
+      - name: "Restore cache"
+        uses: ./
+        with:
+          path: "test.txt"
       - name: "Check restored"
         run: |
           cat ./test.txt | grep 'successo' &> /dev/null
