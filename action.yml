@@ -11,5 +11,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: '[ -f true ] && cp -r "/cache/${{ github.event.repository.name }}/${{ inputs.path }}" ${{ inputs.dest }}'
+    - run: |
+        cp -r /cache/${{ github.event.repository.name }}/${{ inputs.path }} ${{ inputs.dest }}
+        exit 0
       shell: bash
